@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+
+import './App.scss';
+import Accessory from './Components/Accessory/Accessory';
+import { Decoration } from './Components/Decoration/Decoration';
+import Footer from './Components/Footer/Footer';
+import Home from './Components/Home/Home';
+import Nav from './Components/Nav/Nav'
+import SendGift  from './Components/SendGift/SendGift';
+import Share from './Components/Share/Share';
+import {BrowserRouter as Router} from 'react-router-dom';
+
 
 function App() {
+  const [changeTheme, setChangeTheme] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Router>
+      <Nav changeTheme={changeTheme} setChangeTheme={setChangeTheme}/>
+      <Home/>
+      <Share/>
+      <Decoration/>
+      <Accessory/>
+      <SendGift/>
+      <Footer changeTheme={changeTheme}/>
+    </Router>
     </div>
   );
 }
